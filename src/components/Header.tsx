@@ -42,10 +42,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => 
   };
 
   return (
-    <header className={`sticky top-0 z-40 transition-all duration-300 backdrop-blur-lg ${
+    <header className={`sticky top-0 z-40 transition-all duration-300 backdrop-blur-xl ${
       isScrolled
         ? 'bg-white/90 border-b border-gray-200/90 shadow-sm'
-        : 'bg-white/25 border-b border-white/10 shadow-xs'
+        : 'bg-white/10 border-b border-white/10 shadow-xs'
     }`}>
       {/* Top saffron accent border bar */}
       <div className="h-1.5 w-full bg-primary" />
@@ -61,7 +61,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => 
               <GraduationCap className="w-7 h-7 sm:w-8 sm:h-8" />
             </div>
             <div>
-              <h1 className="text-base sm:text-lg font-extrabold tracking-tight text-gray-900 leading-none m-0 drop-shadow-[0_1px_3px_rgba(255,255,255,0.9)]">
+              <h1 className="text-base sm:text-lg font-extrabold tracking-tight text-gray-900 leading-none m-0 [text-shadow:0_0_8px_rgba(255,255,255,0.95),0_0_16px_rgba(255,255,255,0.85),0_1px_2px_rgba(255,255,255,0.9)]">
                 {t('schoolName')}
               </h1>
             </div>
@@ -78,7 +78,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => 
                   className={`px-3.5 py-2 rounded-lg text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer ${
                     isActive
                       ? 'bg-primary/15 text-primary'
-                      : 'text-gray-800 hover:bg-gray-100/70 hover:text-gray-950 drop-shadow-[0_1px_2px_rgba(255,255,255,0.85)]'
+                      : 'text-gray-800 hover:bg-gray-100/70 hover:text-gray-950 [text-shadow:0_0_6px_rgba(255,255,255,0.95),0_0_12px_rgba(255,255,255,0.8)]'
                   }`}
                 >
                   {item.label}
