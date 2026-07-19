@@ -22,10 +22,7 @@ const RevealOnScroll: React.FC<RevealOnScrollProps> = ({ children, delayMs = 0, 
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          if (ref.current) observer.unobserve(ref.current);
-        }
+        setIsVisible(entry.isIntersecting);
       },
       { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
     );
@@ -90,7 +87,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   return (
     <div className="animate-fade-in">
       {/* Hero Section with Background Slideshow */}
-      <section className="relative overflow-hidden bg-slate-950 py-20 sm:py-28 border-b border-slate-900">
+      <section className="relative overflow-hidden bg-slate-950 -mt-[70px] sm:-mt-[86px] pt-[150px] sm:pt-[198px] pb-20 sm:pb-28 border-b border-slate-900">
         {/* Background slideshow images */}
         <div className="absolute inset-0 z-0">
           {images.map((src, idx) => (
@@ -196,14 +193,14 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                       alt=""
                       className="absolute inset-0 w-full h-full object-cover opacity-[0.57] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                     />
-                    <div className="relative z-10 bg-white/78 backdrop-blur-[2px] rounded-xl py-2">
+                    <div className="relative z-10">
                       <div className="inline-flex p-3 bg-blue-50 text-blue-600 rounded-xl mb-4">
                         <Building2 className="w-6 h-6" />
                       </div>
-                      <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">
+                      <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1 [text-shadow:0_0_10px_rgba(255,255,255,0.95),0_0_20px_rgba(255,255,255,0.85)]">
                         1995 <span className="text-xs font-semibold text-primary font-mono block sm:inline">[Sample]</span>
                       </div>
-                      <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                      <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide [text-shadow:0_0_8px_rgba(255,255,255,0.95),0_0_16px_rgba(255,255,255,0.85)]">
                         {t('home.stats.yearLabel')}
                       </div>
                     </div>
@@ -218,14 +215,14 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                       alt=""
                       className="absolute inset-0 w-full h-full object-cover opacity-[0.57] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                     />
-                    <div className="relative z-10 bg-white/78 backdrop-blur-[2px] rounded-xl py-2">
+                    <div className="relative z-10">
                       <div className="inline-flex p-3 bg-emerald-50 text-emerald-600 rounded-xl mb-4">
                         <Users className="w-6 h-6" />
                       </div>
-                      <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">
+                      <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1 [text-shadow:0_0_10px_rgba(255,255,255,0.95),0_0_20px_rgba(255,255,255,0.85)]">
                         1200+ <span className="text-xs font-semibold text-primary font-mono block sm:inline">[Sample]</span>
                       </div>
-                      <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                      <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide [text-shadow:0_0_8px_rgba(255,255,255,0.95),0_0_16px_rgba(255,255,255,0.85)]">
                         {t('home.stats.studentsLabel')}
                       </div>
                     </div>
@@ -240,14 +237,14 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                       alt=""
                       className="absolute inset-0 w-full h-full object-cover opacity-[0.57] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                     />
-                    <div className="relative z-10 bg-white/78 backdrop-blur-[2px] rounded-xl py-2">
+                    <div className="relative z-10">
                       <div className="inline-flex p-3 bg-purple-50 text-purple-600 rounded-xl mb-4">
                         <GraduationCap className="w-6 h-6" />
                       </div>
-                      <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">
+                      <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1 [text-shadow:0_0_10px_rgba(255,255,255,0.95),0_0_20px_rgba(255,255,255,0.85)]">
                         45 <span className="text-xs font-semibold text-primary font-mono block sm:inline">[Sample]</span>
                       </div>
-                      <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                      <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide [text-shadow:0_0_8px_rgba(255,255,255,0.95),0_0_16px_rgba(255,255,255,0.85)]">
                         {t('home.stats.staffLabel')}
                       </div>
                     </div>
@@ -262,14 +259,14 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                       alt=""
                       className="absolute inset-0 w-full h-full object-cover opacity-[0.57] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                     />
-                    <div className="relative z-10 bg-white/78 backdrop-blur-[2px] rounded-xl py-2">
+                    <div className="relative z-10">
                       <div className="inline-flex p-3 bg-amber-50 text-amber-600 rounded-xl mb-4">
                         <Award className="w-6 h-6" />
                       </div>
-                      <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">
+                      <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1 [text-shadow:0_0_10px_rgba(255,255,255,0.95),0_0_20px_rgba(255,255,255,0.85)]">
                         98% <span className="text-xs font-semibold text-primary font-mono block sm:inline">[Sample]</span>
                       </div>
-                      <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                      <div className="text-xs font-semibold text-gray-600 uppercase tracking-wide [text-shadow:0_0_8px_rgba(255,255,255,0.95),0_0_16px_rgba(255,255,255,0.85)]">
                         {t('home.stats.successLabel')}
                       </div>
                     </div>
