@@ -3,6 +3,58 @@ import { useTranslation } from 'react-i18next';
 import { ArrowRight, Bell, Calendar, Award, Users, GraduationCap, Building2 } from 'lucide-react';
 import { SampleDataBadge } from '../components/SampleDataBadge';
 
+interface RevealOnScrollProps {
+  children: React.ReactNode;
+  delayMs?: number;
+  className?: string;
+}
+
+const RevealOnScroll: React.FC<RevealOnScrollProps> = ({ children, delayMs = 0, className = '' }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mediaQuery.matches) {
+      setIsVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          if (ref.current) observer.unobserve(ref.current);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        transitionDuration: '700ms',
+        transitionDelay: `${delayMs}ms`,
+      }}
+      className={`transition-all ease-out ${
+        isVisible
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-5'
+      } ${className}`}
+    >
+      {children}
+    </div>
+  );
+};
+
 interface HomeProps {
   onNavigate: (page: string) => void;
 }
@@ -123,121 +175,166 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* Quick Stats Section with strict Sample Data labels */}
-      <section className="py-16 bg-white">
+      {/* Quick Stats Section with strict Sample Data labels & Watermarks */}
+      <section className="py-16 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h3 className="text-3xl font-extrabold text-gray-900 mb-2">
-              {t('home.stats.title')}
-            </h3>
-            <p className="text-sm text-gray-500">
-              {t('home.stats.subtitle')}
-            </p>
-          </div>
-
-          <SampleDataBadge className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-2">
-              {/* Stat 1 */}
-              <div className="text-center bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
-                <div className="inline-flex p-3 bg-blue-50 text-blue-600 rounded-xl mb-4">
-                  <Building2 className="w-6 h-6" />
-                </div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">
-                  1995 <span className="text-xs font-semibold text-primary font-mono block sm:inline">[Sample]</span>
-                </div>
-                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                  {t('home.stats.yearLabel')}
-                </div>
-              </div>
-
-              {/* Stat 2 */}
-              <div className="text-center bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
-                <div className="inline-flex p-3 bg-emerald-50 text-emerald-600 rounded-xl mb-4">
-                  <Users className="w-6 h-6" />
-                </div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">
-                  1200+ <span className="text-xs font-semibold text-primary font-mono block sm:inline">[Sample]</span>
-                </div>
-                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                  {t('home.stats.studentsLabel')}
-                </div>
-              </div>
-
-              {/* Stat 3 */}
-              <div className="text-center bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
-                <div className="inline-flex p-3 bg-purple-50 text-purple-600 rounded-xl mb-4">
-                  <GraduationCap className="w-6 h-6" />
-                </div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">
-                  45 <span className="text-xs font-semibold text-primary font-mono block sm:inline">[Sample]</span>
-                </div>
-                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                  {t('home.stats.staffLabel')}
-                </div>
-              </div>
-
-              {/* Stat 4 */}
-              <div className="text-center bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
-                <div className="inline-flex p-3 bg-amber-50 text-amber-600 rounded-xl mb-4">
-                  <Award className="w-6 h-6" />
-                </div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">
-                  98% <span className="text-xs font-semibold text-primary font-mono block sm:inline">[Sample]</span>
-                </div>
-                <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                  {t('home.stats.successLabel')}
-                </div>
-              </div>
+          <RevealOnScroll delayMs={0}>
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <h3 className="text-3xl font-extrabold text-gray-900 mb-2">
+                {t('home.stats.title')}
+              </h3>
+              <p className="text-sm text-gray-500">
+                {t('home.stats.subtitle')}
+              </p>
             </div>
-          </SampleDataBadge>
+          </RevealOnScroll>
+
+          <RevealOnScroll delayMs={50}>
+            <SampleDataBadge className="max-w-5xl mx-auto">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-2">
+                {/* Stat 1 - Founding Year */}
+                <RevealOnScroll delayMs={0} className="w-full">
+                  <div className="relative overflow-hidden text-center bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow group h-full">
+                    {/* Themed low opacity watermark background */}
+                    <img
+                      src="/images/img1.webp"
+                      alt=""
+                      className="absolute inset-0 w-full h-full object-cover opacity-[0.08] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+                    />
+                    <div className="relative z-10">
+                      <div className="inline-flex p-3 bg-blue-50 text-blue-600 rounded-xl mb-4">
+                        <Building2 className="w-6 h-6" />
+                      </div>
+                      <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">
+                        1995 <span className="text-xs font-semibold text-primary font-mono block sm:inline">[Sample]</span>
+                      </div>
+                      <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                        {t('home.stats.yearLabel')}
+                      </div>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+
+                {/* Stat 2 - Enrolled Students */}
+                <RevealOnScroll delayMs={100} className="w-full">
+                  <div className="relative overflow-hidden text-center bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow group h-full">
+                    <img
+                      src="/images/img2.webp"
+                      alt=""
+                      className="absolute inset-0 w-full h-full object-cover opacity-[0.08] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+                    />
+                    <div className="relative z-10">
+                      <div className="inline-flex p-3 bg-emerald-50 text-emerald-600 rounded-xl mb-4">
+                        <Users className="w-6 h-6" />
+                      </div>
+                      <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">
+                        1200+ <span className="text-xs font-semibold text-primary font-mono block sm:inline">[Sample]</span>
+                      </div>
+                      <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                        {t('home.stats.studentsLabel')}
+                      </div>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+
+                {/* Stat 3 - Teaching Staff */}
+                <RevealOnScroll delayMs={200} className="w-full">
+                  <div className="relative overflow-hidden text-center bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow group h-full">
+                    <img
+                      src="/images/img4.webp"
+                      alt=""
+                      className="absolute inset-0 w-full h-full object-cover opacity-[0.08] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+                    />
+                    <div className="relative z-10">
+                      <div className="inline-flex p-3 bg-purple-50 text-purple-600 rounded-xl mb-4">
+                        <GraduationCap className="w-6 h-6" />
+                      </div>
+                      <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">
+                        45 <span className="text-xs font-semibold text-primary font-mono block sm:inline">[Sample]</span>
+                      </div>
+                      <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                        {t('home.stats.staffLabel')}
+                      </div>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+
+                {/* Stat 4 - Exam Pass Rate */}
+                <RevealOnScroll delayMs={300} className="w-full">
+                  <div className="relative overflow-hidden text-center bg-white p-5 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow group h-full">
+                    <img
+                      src="/images/img3.webp"
+                      alt=""
+                      className="absolute inset-0 w-full h-full object-cover opacity-[0.08] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+                    />
+                    <div className="relative z-10">
+                      <div className="inline-flex p-3 bg-amber-50 text-amber-600 rounded-xl mb-4">
+                        <Award className="w-6 h-6" />
+                      </div>
+                      <div className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">
+                        98% <span className="text-xs font-semibold text-primary font-mono block sm:inline">[Sample]</span>
+                      </div>
+                      <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                        {t('home.stats.successLabel')}
+                      </div>
+                    </div>
+                  </div>
+                </RevealOnScroll>
+              </div>
+            </SampleDataBadge>
+          </RevealOnScroll>
         </div>
       </section>
 
       {/* Notice Board Preview */}
-      <section className="py-16 bg-gray-50 border-t border-gray-100">
+      <section className="py-16 bg-gray-50 border-t border-gray-100 overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-bold text-gray-900 flex items-center space-x-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-primary block" />
-              <span>{t('home.noticesPreviewTitle')}</span>
-            </h3>
-            <button
-              onClick={() => onNavigate('news')}
-              className="text-xs sm:text-sm font-bold text-primary hover:text-orange-700 hover:underline cursor-pointer flex items-center space-x-1"
-            >
-              <span>{t('home.viewAllNotices')}</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-
-          <SampleDataBadge>
-            <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm relative hover:shadow-md transition-shadow duration-300">
-              <span className="absolute top-4 right-4 bg-orange-100 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full">
-                Admission
-              </span>
-              
-              <div className="flex items-center space-x-2 text-xs text-gray-400 mb-3">
-                <Calendar className="w-4 h-4 text-primary" />
-                <span>March 15, 2026</span>
-              </div>
-              
-              <h4 className="text-lg font-bold text-gray-900 mb-2 leading-snug">
-                Admission Process Open for Academic Session
-              </h4>
-              
-              <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                Admissions are now open for Classes 6, 9, and 11. Parents can collect the enquiry form from the administrative office or submit the online enquiry form on this website. Seats are limited.
-              </p>
-
+          <RevealOnScroll delayMs={0}>
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-2xl font-bold text-gray-900 flex items-center space-x-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-primary block" />
+                <span>{t('home.noticesPreviewTitle')}</span>
+              </h3>
               <button
-                onClick={() => onNavigate('admissions')}
-                className="text-xs font-bold text-primary hover:text-orange-700 flex items-center space-x-1 cursor-pointer focus:outline-none"
+                onClick={() => onNavigate('news')}
+                className="text-xs sm:text-sm font-bold text-primary hover:text-orange-700 hover:underline cursor-pointer flex items-center space-x-1"
               >
-                <span>Read Requirements & Submit Enquiry</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <span>{t('home.viewAllNotices')}</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
-          </SampleDataBadge>
+          </RevealOnScroll>
+
+          <RevealOnScroll delayMs={100}>
+            <SampleDataBadge>
+              <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm relative hover:shadow-md transition-shadow duration-300">
+                <span className="absolute top-4 right-4 bg-orange-100 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full">
+                  Admission
+                </span>
+                
+                <div className="flex items-center space-x-2 text-xs text-gray-400 mb-3">
+                  <Calendar className="w-4 h-4 text-primary" />
+                  <span>March 15, 2026</span>
+                </div>
+                
+                <h4 className="text-lg font-bold text-gray-900 mb-2 leading-snug">
+                  Admission Process Open for Academic Session
+                </h4>
+                
+                <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                  Admissions are now open for Classes 6, 9, and 11. Parents can collect the enquiry form from the administrative office or submit the online enquiry form on this website. Seats are limited.
+                </p>
+
+                <button
+                  onClick={() => onNavigate('admissions')}
+                  className="text-xs font-bold text-primary hover:text-orange-700 flex items-center space-x-1 cursor-pointer focus:outline-none"
+                >
+                  <span>Read Requirements & Submit Enquiry</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </SampleDataBadge>
+          </RevealOnScroll>
         </div>
       </section>
     </div>

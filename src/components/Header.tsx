@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Menu, X, GraduationCap, Globe } from 'lucide-react';
 
@@ -10,6 +10,15 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => {
   const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
     { id: 'home', label: t('nav.home') },
@@ -33,27 +42,28 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => 
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <header className={`sticky top-0 z-40 transition-all duration-300 backdrop-blur-md ${
+      isScrolled
+        ? 'bg-white/95 border-b border-gray-200/90 shadow-sm'
+        : 'bg-white/50 border-b border-white/20 shadow-xs'
+    }`}>
       {/* Top saffron accent border bar */}
       <div className="h-1.5 w-full bg-primary" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo & School Name */}
+        <div className="flex items-center justify-between h-16 sm:h-20">
+          {/* Logo & School Name (Subtitle removed per requirement 2) */}
           <div 
             onClick={() => handleNavClick('home')}
             className="flex items-center space-x-3 cursor-pointer group"
           >
-            <div className="bg-primary/10 p-2 rounded-xl text-primary transition-transform duration-300 group-hover:scale-105">
-              <GraduationCap className="w-8 h-8" />
+            <div className="bg-primary/10 p-2 rounded-xl text-primary transition-transform duration-300 group-hover:scale-105 shadow-xs">
+              <GraduationCap className="w-7 h-7 sm:w-8 sm:h-8" />
             </div>
             <div>
-              <h1 className="text-lg sm:text-xl font-extrabold tracking-tight text-gray-900 leading-none m-0">
+              <h1 className="text-base sm:text-lg font-extrabold tracking-tight text-gray-900 leading-none m-0 drop-shadow-xs">
                 {t('schoolName')}
               </h1>
-              <p className="text-[10px] sm:text-xs text-gray-500 font-medium tracking-wide mt-1">
-                {t('schoolType')}
-              </p>
             </div>
           </div>
 
@@ -65,10 +75,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => 
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`px-3.5 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all duration-200 cursor-pointer ${
+                  className={`px-3.5 py-2 rounded-lg text-sm font-bold tracking-wide transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? 'bg-primary/10 text-primary'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                      ? 'bg-primary/15 text-primary'
+                      : 'text-gray-800 hover:bg-gray-100/70 hover:text-gray-950 drop-shadow-xs'
                   }`}
                 >
                   {item.label}
@@ -78,23 +88,23 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => 
           </nav>
 
           {/* Desktop Language Switcher */}
-          <div className="hidden lg:flex items-center bg-gray-100 p-1 rounded-xl border border-gray-200">
+          <div className="hidden lg:flex items-center bg-gray-100/90 p-1 rounded-xl border border-gray-200/90 shadow-xs backdrop-blur-sm">
             <button
               onClick={() => toggleLanguage('en')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all duration-200 cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-extrabold tracking-wide transition-all duration-200 cursor-pointer ${
                 i18n.language === 'en'
-                  ? 'bg-primary text-white shadow'
-                  : 'text-gray-500 hover:text-gray-900'
+                  ? 'bg-primary text-white shadow-sm'
+                  : 'text-gray-700 hover:text-gray-950 hover:bg-white/50'
               }`}
             >
               EN
             </button>
             <button
               onClick={() => toggleLanguage('hi')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all duration-200 cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-extrabold tracking-wide transition-all duration-200 cursor-pointer ${
                 i18n.language === 'hi'
-                  ? 'bg-primary text-white shadow'
-                  : 'text-gray-500 hover:text-gray-900'
+                  ? 'bg-primary text-white shadow-sm'
+                  : 'text-gray-700 hover:text-gray-950 hover:bg-white/50'
               }`}
             >
               हिन्दी
@@ -106,7 +116,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => 
             {/* Quick Lang toggle on mobile */}
             <button
               onClick={() => toggleLanguage(i18n.language === 'en' ? 'hi' : 'en')}
-              className="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg border border-gray-200 bg-gray-55 text-xs font-bold text-gray-700 hover:bg-gray-100 cursor-pointer focus:outline-none"
+              className="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg border border-gray-200/90 bg-white/80 text-xs font-bold text-gray-800 hover:bg-gray-100 cursor-pointer focus:outline-none shadow-xs"
               aria-label="Switch Language"
             >
               <Globe className="w-3.5 h-3.5 text-primary" />
@@ -116,7 +126,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => 
             {/* Mobile Menu Hamburger */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 cursor-pointer focus:outline-none"
+              className="p-2 rounded-lg text-gray-800 hover:bg-gray-100 hover:text-gray-900 cursor-pointer focus:outline-none"
               aria-label="Toggle Navigation Menu"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -127,7 +137,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => 
 
       {/* Mobile Drawer Overlay */}
       {isMenuOpen && (
-        <div className="lg:hidden animate-fade-in border-t border-gray-100 bg-white px-4 py-4 shadow-xl">
+        <div className="lg:hidden animate-fade-in border-t border-gray-100 bg-white/95 backdrop-blur-md px-4 py-4 shadow-xl">
           <nav className="flex flex-col space-y-1">
             {navItems.map((item) => {
               const isActive = currentPage === item.id;
@@ -138,7 +148,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, onPageChange }) => 
                   className={`w-full text-left px-4 py-3 rounded-lg text-sm font-bold transition-all duration-200 cursor-pointer ${
                     isActive
                       ? 'bg-primary/10 text-primary'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                      : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
                   }`}
                 >
                   {item.label}
