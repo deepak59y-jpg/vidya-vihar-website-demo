@@ -27,7 +27,7 @@ const RevealOnScroll: React.FC<RevealOnScrollProps> = ({ children, delayMs = 0, 
           if (ref.current) observer.unobserve(ref.current);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
     );
 
     if (ref.current) {
@@ -41,13 +41,13 @@ const RevealOnScroll: React.FC<RevealOnScrollProps> = ({ children, delayMs = 0, 
     <div
       ref={ref}
       style={{
-        transitionDuration: '700ms',
+        transitionDuration: '850ms',
         transitionDelay: `${delayMs}ms`,
       }}
       className={`transition-all ease-out ${
         isVisible
-          ? 'opacity-100 translate-y-0'
-          : 'opacity-0 translate-y-5'
+          ? 'opacity-100 translate-y-0 scale-100'
+          : 'opacity-0 translate-y-12 scale-95'
       } ${className}`}
     >
       {children}
@@ -110,11 +110,6 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center space-x-2 bg-primary/20 border border-primary/30 px-3 py-1.5 rounded-full text-xs font-bold text-primary mb-6 backdrop-blur-md">
-              <span className="w-2 h-2 rounded-full bg-primary animate-ping" />
-              <span>{t('schoolType')}</span>
-            </div>
-            
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-6 drop-shadow-md">
               {t('home.heroTitle')}
             </h2>
@@ -199,9 +194,9 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                     <img
                       src="/images/img1.webp"
                       alt=""
-                      className="absolute inset-0 w-full h-full object-cover opacity-[0.08] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+                      className="absolute inset-0 w-full h-full object-cover opacity-[0.57] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                     />
-                    <div className="relative z-10">
+                    <div className="relative z-10 bg-white/78 backdrop-blur-[2px] rounded-xl py-2">
                       <div className="inline-flex p-3 bg-blue-50 text-blue-600 rounded-xl mb-4">
                         <Building2 className="w-6 h-6" />
                       </div>
@@ -221,9 +216,9 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                     <img
                       src="/images/img2.webp"
                       alt=""
-                      className="absolute inset-0 w-full h-full object-cover opacity-[0.08] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+                      className="absolute inset-0 w-full h-full object-cover opacity-[0.57] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                     />
-                    <div className="relative z-10">
+                    <div className="relative z-10 bg-white/78 backdrop-blur-[2px] rounded-xl py-2">
                       <div className="inline-flex p-3 bg-emerald-50 text-emerald-600 rounded-xl mb-4">
                         <Users className="w-6 h-6" />
                       </div>
@@ -243,9 +238,9 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                     <img
                       src="/images/img4.webp"
                       alt=""
-                      className="absolute inset-0 w-full h-full object-cover opacity-[0.08] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+                      className="absolute inset-0 w-full h-full object-cover opacity-[0.57] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                     />
-                    <div className="relative z-10">
+                    <div className="relative z-10 bg-white/78 backdrop-blur-[2px] rounded-xl py-2">
                       <div className="inline-flex p-3 bg-purple-50 text-purple-600 rounded-xl mb-4">
                         <GraduationCap className="w-6 h-6" />
                       </div>
@@ -265,9 +260,9 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                     <img
                       src="/images/img3.webp"
                       alt=""
-                      className="absolute inset-0 w-full h-full object-cover opacity-[0.08] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+                      className="absolute inset-0 w-full h-full object-cover opacity-[0.57] group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                     />
-                    <div className="relative z-10">
+                    <div className="relative z-10 bg-white/78 backdrop-blur-[2px] rounded-xl py-2">
                       <div className="inline-flex p-3 bg-amber-50 text-amber-600 rounded-xl mb-4">
                         <Award className="w-6 h-6" />
                       </div>
