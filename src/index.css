@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #F2994A;
+  --color-accent: #27AE60;
+  --color-off-white: #FDFDFD;
+}
+
+:root {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+:root[lang="hi"] {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+body {
+  background-color: #F9FAFB; /* Light neutral gray background for premium look */
+  color: #1F2937; /* Neutral dark gray for body text */
+}
+
+/* Custom micro-animations */
+.hover-scale {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

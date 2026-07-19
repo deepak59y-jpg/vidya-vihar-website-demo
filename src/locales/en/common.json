@@ -1,0 +1,196 @@
+{
+  "schoolName": "Vidya Vihar Inter College",
+  "schoolType": "Intermediate College, UP Board affiliated, Private/Unaided",
+  "boardName": "Uttar Madhyamik Shiksha Parishad (UP Board)",
+  "common": {
+    "sampleDataTag": "Sample Data — Confirm With School",
+    "tbd": "TBD",
+    "tbdLabel": "[TBD - Confirm with School]",
+    "close": "Close",
+    "submit": "Submit Enquiry",
+    "submitting": "Submitting...",
+    "success": "Success",
+    "comingSoon": "Coming Soon"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "academics": "Academics",
+    "admissions": "Admissions",
+    "gallery": "Gallery",
+    "facilities": "Facilities",
+    "news": "News & Notices",
+    "contact": "Contact Us"
+  },
+  "home": {
+    "heroTitle": "Empowering Minds, Shaping Futures",
+    "heroSubtitle": "Vidya Vihar Inter College, Salarpur, Varanasi. UP Board Affiliated Intermediate Education.",
+    "ctaAdmissions": "Admission Enquiry",
+    "ctaExplore": "Explore Campus",
+    "admissionAlert": "Admissions are typically open for March-April cycle. Enquiry form is active.",
+    "stats": {
+      "title": "School at a Glance",
+      "subtitle": "Key statistics and figures of Vidya Vihar Inter College",
+      "yearLabel": "Founding Year",
+      "studentsLabel": "Enrolled Students",
+      "staffLabel": "Teaching Staff",
+      "successLabel": "Board Exam Pass Rate"
+    },
+    "noticesPreviewTitle": "Latest Announcement",
+    "viewAllNotices": "View All Notices",
+    "quickLinks": "Quick Links"
+  },
+  "about": {
+    "title": "About Our Institution",
+    "subtitle": "Discover the heritage, local context, and facilities of Vidya Vihar Inter College",
+    "historyTitle": "Our History",
+    "historyContent": "Established to serve the educational needs of Salarpur and surrounding regions in Varanasi, Vidya Vihar Inter College has been providing quality intermediate education under the UP Board. The school fosters academic diligence and moral character.",
+    "contextTitle": "Local Context & Connectivity",
+    "contextP1": "Salarpur is a Census Town located in the Varanasi District of Uttar Pradesh, situated approximately 8–10 km from the heart of Varanasi city center. The locality boasts a literacy rate of 73.97%, which is notably higher than the Uttar Pradesh state average of 67.68%.",
+    "contextP2": "Our campus is highly accessible and well-connected via the Varanasi–Sarnath Road. The nearest major railway hub is Varanasi Junction (Cantt), located approximately 10 km away, with Sarnath Railway Station also in close proximity. The college serves students from nearby areas including Godowlia, Sarnath, Shivpur, and Shankerpur.",
+    "contextP3": "Being situated in the Varanasi district, which is one of India's preeminent historical education hubs (home to institutions like Banaras Hindu University, IIT-BHU, and Sampurnanand Sanskrit University), the college draws inspiration from this rich academic heritage to offer high-quality learning locally.",
+    "campusTitle": "Campus & Environment",
+    "campusDescription": "Our multi-building campus features 2–3 story buildings painted in light yellow/cream exteriors, set within a secure walled compound with a metal main gate featuring Hindi signage. The campus is designed to support the academic and physical growth of our students.",
+    "campusFeatures": {
+      "courtyard": "Large open courtyard used for morning assembly and physical activities.",
+      "greening": "Beautiful landscaping with trees, including palm trees, planted around the campus.",
+      "parking": "Dedicated bicycle parking area, accommodating the primary mode of commute for our students.",
+      "solar": "Eco-friendly solar street lighting installed across the campus grounds."
+    },
+    "principal": {
+      "title": "Principal's Message",
+      "nameLabel": "Principal Name",
+      "messageLabel": "Principal's Message to Students & Parents",
+      "placeholderText": "Dear Students, Parents, and Well-wishers, welcome to Vidya Vihar Inter College. Our mission is to provide an inclusive and inspiring environment where every student can achieve their full potential. We emphasize academic rigor, character development, and active community participation. We invite you to join us in our journey toward educational excellence.",
+      "contactLabel": "Principal Contact"
+    }
+  },
+  "academics": {
+    "title": "Academic Programs",
+    "subtitle": "Comprehensive intermediate education following the UP Board curriculum",
+    "classesTitle": "Classes Offered",
+    "classesSubtitle": "We offer structured education across three developmental levels",
+    "middleSchool": "Middle School (Classes 6-8)",
+    "middleDesc": "Core foundational classes preparing students with essential concepts in Languages, Mathematics, Science, and Social Studies.",
+    "highSchool": "High School (Classes 9-10)",
+    "highDesc": "Focus on secondary board preparation under the Uttar Pradesh Madhyamik Shiksha Parishad (UP Board).",
+    "intermediate": "Intermediate (Classes 11-12)",
+    "intermediateDesc": "Specialized education split into academic streams to prepare students for higher education and career paths.",
+    "streamsTitle": "Available Streams (Classes 11 & 12)",
+    "streamsSubtitle": "Intermediate students can opt for one of the three standard streams",
+    "scienceStream": "Science Stream",
+    "scienceDesc": "Focus on analytical and scientific reasoning. Subject paths include Physics, Chemistry, and Mathematics (PCM) or Physics, Chemistry, and Biology (PCB).",
+    "commerceStream": "Commerce Stream",
+    "commerceDesc": "Preparation for financial, business, and economic sectors. Covers core subjects like Accountancy, Business Studies, and Economics.",
+    "artsStream": "Arts (Humanities) Stream",
+    "artsDesc": "Broad education in languages, social sciences, and history, fostering critical thinking and creative expression.",
+    "curriculumTitle": "Curriculum Details",
+    "curriculumNote": "Subjects and syllabus are governed by the Uttar Pradesh Board (UPMSP). Course textbooks, exams, and certifications strictly adhere to board regulations.",
+    "udiseCode": "UDISE Code",
+    "regNumber": "Board Affiliation Number"
+  },
+  "admissions": {
+    "title": "Admissions & Entry",
+    "subtitle": "Detailed information about admission timelines, eligibility, and enquiry",
+    "cycleTitle": "Admission Cycle",
+    "cycleDesc": "Admissions typically open in the months of March and April. The school conducts admissions based on seat availability and basic entry evaluations.",
+    "entryPointsTitle": "Entry points:",
+    "entryPointsList": "Entry points are standard at Class 6 (Middle School), Class 9 (High School), and Class 11 (Intermediate).",
+    "docsTitle": "Required Documents Checklist",
+    "docsDesc": "Parents/Students must submit clear copies of the following documents during admission registration:",
+    "docsList": [
+      "Transfer Certificate (TC) from the previous school",
+      "Previous class Marksheet / Report Card",
+      "Character Certificate",
+      "Caste Certificate (if applying under reserved categories)",
+      "Aadhaar Card (Student and Parent)",
+      "Recent passport-sized photographs",
+      "Domicile Certificate"
+    ],
+    "feesTitle": "Fee Structure",
+    "feesDesc": "Please contact the school administrative office for the detailed class-wise fee structure.",
+    "formTitle": "Admission Enquiry Form",
+    "formDesc": "Submit an enquiry to request detailed information about seat availability, fees, and admission tests.",
+    "fieldName": "Student's Name",
+    "fieldParent": "Parent/Guardian's Name",
+    "fieldClass": "Class Applied For",
+    "selectClassPlaceholder": "Select a Class",
+    "fieldWhatsApp": "WhatsApp Contact Number",
+    "fieldMessage": "Query or Message",
+    "successTitle": "Enquiry Submitted Successfully!",
+    "successDesc": "Thank you for your interest in Vidya Vihar Inter College. A representative will contact you on your WhatsApp number shortly.",
+    "validation": {
+      "nameRequired": "Student's name is required",
+      "parentRequired": "Parent's name is required",
+      "classRequired": "Please select a class",
+      "phoneRequired": "WhatsApp contact number is required",
+      "phonePattern": "Please enter a valid 10-digit mobile number"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with the school administration or visit our campus",
+    "addressTitle": "School Address",
+    "addressDesc": "82XJ+6W6, Near Vidya Vihar Inter College, Salarpur, Varanasi, Uttar Pradesh 221112",
+    "plusCodeTitle": "Google Maps Plus Code",
+    "plusCodeDesc": "82XJ+6W6 Salarpur, Varanasi, Uttar Pradesh",
+    "mapTitle": "Location Map",
+    "directionsTitle": "How to Reach",
+    "directionsDesc": "The campus is situated near the Varanasi-Sarnath Road, making it highly accessible via auto-rickshaws, buses, and local transport. It is approximately 10 km from Varanasi Junction (Cantt) and near Sarnath Railway Station. Major local landmarks include Godowlia (~10km), Shivpur, and Shankerpur.",
+    "officeHours": "Office Working Hours",
+    "contactInfo": "Direct Contacts"
+  },
+  "facilities": {
+    "title": "Campus Facilities",
+    "subtitle": "Infrastructure and resources supporting student activities and learning",
+    "courtyardTitle": "Assembly Ground & Courtyard",
+    "courtyardDesc": "A spacious, open courtyard located at the center of the campus. It serves as the venue for the daily morning assemblies, national day celebrations, and physical exercise sessions.",
+    "parkingTitle": "Dedicated Bicycle Parking",
+    "parkingDesc": "Understanding that most of our students commute from nearby villages and town areas by bicycle, we provide a secure, covered compound area dedicated entirely to bicycle parking.",
+    "classroomTitle": "Classrooms & Buildings",
+    "classroomDesc": "The school features 2-3 story academic blocks with cream/light yellow exteriors. Classrooms are designed to be ventilated and spacious, facilitating focused group study.",
+    "solarTitle": "Solar Street Lighting",
+    "solarDesc": "In line with eco-friendly initiatives, the campus grounds are equipped with solar-powered street lighting, ensuring illumination and safety across the compound during evening hours."
+  },
+  "news": {
+    "title": "News & Notices",
+    "subtitle": "Latest updates, notifications, and holiday declarations from the college admin",
+    "noticeBoardTitle": "Notice Board",
+    "postedOn": "Posted on:",
+    "sampleNotices": [
+      {
+        "id": "1",
+        "title": "Admission Process Open for Academic Session",
+        "date": "March 15, 2026",
+        "content": "Admissions are now open for Classes 6, 9, and 11. Parents can collect the enquiry form from the administrative office or submit the online enquiry form on this website. Seats are limited.",
+        "category": "Admission"
+      },
+      {
+        "id": "2",
+        "title": "Upcoming Summer Vacation Notice",
+        "date": "May 10, 2026",
+        "content": "The school will remain closed for summer vacation starting from May 20, 2026, to June 30, 2026. Regular classes for all standards will resume on July 01, 2026.",
+        "category": "Holiday"
+      },
+      {
+        "id": "3",
+        "title": "Mock Board Examinations Schedule",
+        "date": "January 05, 2026",
+        "content": "Mock board exams for Class 10 and Class 12 students are scheduled to start from January 15, 2026. Detailed time tables have been distributed in classrooms. Attendance is mandatory.",
+        "category": "Examination"
+      }
+    ]
+  },
+  "gallery": {
+    "title": "Campus Gallery",
+    "subtitle": "Visual glimpses of Vidya Vihar Inter College campus and student life",
+    "tabs": {
+      "all": "All Photos",
+      "gate": "Main Gate",
+      "courtyard": "Courtyard & Campus",
+      "classroom": "Classrooms",
+      "parking": "Bicycle Parking"
+    },
+    "note": "Note: Sourced with stock placeholders for presentation. Real photos will be uploaded upon final approval."
+  }
+}
